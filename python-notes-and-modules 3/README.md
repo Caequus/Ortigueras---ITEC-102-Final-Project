@@ -44,16 +44,7 @@ python-notes-and-modules/
     └── 04_combined_project_file_organizer/     (smart_organizer.py + PROJECT_NOTES.md)
 ```
 
-## How to run any example
-1. Install **Python 3.10 or newer** (the `match / case` topic needs 3.10; everything else runs on 3.8+).
-2. Open a terminal inside the folder you want, for example:
-   ```
-   cd Part2_Python_Modules/01_os
-   python 01_where_am_i.py
-   ```
-3. Examples are numbered, so run them in order: they get harder as the numbers go up.
-
 ## Notes
 - The demo videos are **not** included in this repository (they are submitted separately through Google Drive / YouTube).
-- Part 2 examples that create files use a temporary `playground` folder and delete it afterward.
+- In the part 2 examples, be careful when running them as effects may include deletion of files or movement of files. Please read the instruction first and what the code will do
 - Part 1 file examples (`12_file_streaming`) create `demo_*` files, `diary.txt` and `gradebook.txt` in the folder you run them from. Git ignores them.
