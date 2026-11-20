@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Smart Organizer",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/python-notes-and-modules 3/Part2_Python_Modules/04_combined_project_file_organizer/smart_organizer.py",
+            "cwd": "${workspaceFolder}/python-notes-and-modules 3/Part2_Python_Modules/04_combined_project_file_organizer",
+            "console": "integratedTerminal",
+            "python": "/usr/local/bin/python3"
+        }
+    ]
+}
