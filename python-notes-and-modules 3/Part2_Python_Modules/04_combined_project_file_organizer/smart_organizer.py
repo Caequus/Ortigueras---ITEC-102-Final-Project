@@ -1,10 +1,11 @@
-"""
-SMART DOWNLOADS ORGANIZER (os + fnmatch + shutil)
+test = """
+    SMART DOWNLOADS ORGANIZER (os + fnmatch + shutil)
 
-Put files in Messy_Downloads next to this script and run the program. It plans
-to sort every file directly inside that folder, then asks before applying the
-plan. Temporary files are moved into Deleted_Backup so they can be restored.
+    Put files in Messy_Downloads next to this script and run the program. It plans
+    to sort every file directly inside that folder, then asks before applying the
+    plan. Temporary files are moved into Deleted_Backup so they can be restored.
 """
+print(test)
 import os
 import fnmatch
 import shutil
