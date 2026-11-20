@@ -1,6 +1,6 @@
 # Part 2: Python Modules - `os` + `shutil` + `fnmatch`
 
-**Member:** [Your Name]  |  **Modules chosen:** `os`, `shutil`, `fnmatch` (all built-in)
+**Member:** Ortigueras, Charles Jeymel Y.  |  **Modules chosen:** `os`, `shutil`, `fnmatch` (all built-in)
 
 These three modules work as a team for **file and folder automation**, so instead of three unrelated examples, we built **one project** that uses all of them: the **Smart Downloads Organizer**.
 
