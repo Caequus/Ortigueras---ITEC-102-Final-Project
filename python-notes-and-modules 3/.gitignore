@@ -4,6 +4,11 @@ playground/
 Messy_Downloads/
 Backup_Before_Sorting/
 Sorted_Downloads.zip
+Deleted_Backup/
+
+# macOS Finder metadata
+.DS_Store
+
 # Videos are NOT part of the GitHub upload
 *.mp4
 *.mkv
