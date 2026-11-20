@@ -10,7 +10,7 @@
    ```
 3. Choose **1** to organize (type `y` to apply the plan) or **2** to restore a backed-up file.
 
-## The team: who does what?
+## The Python Modules
 | Module | Job in the project | Think of it as... |
 |---|---|---|
 | `os` | Finds the folders, lists the files, builds paths, checks names | The **eyes** |
