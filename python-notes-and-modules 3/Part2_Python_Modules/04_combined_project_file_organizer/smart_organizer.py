@@ -3,7 +3,7 @@ SMART DOWNLOADS ORGANIZER (os + fnmatch + shutil)
 
 Put files in Messy_Downloads next to this script and run the program. It plans
 to sort every file directly inside that folder, then asks before applying the
-plan. Temporary files are listed for deletion in the plan.
+plan. Temporary files are moved into Deleted_Backup so they can be restored.
 """
 import os
 import fnmatch
@@ -14,6 +14,7 @@ import shutil
 # directly inside DOWNLOADS and moves them into category subfolders there.
 BASE = os.path.dirname(os.path.abspath(__file__))
 DOWNLOADS = os.path.join(BASE, "Messy_Downloads")
+RECOVERY_BACKUP = os.path.join(BASE, "Deleted_Backup")
 
 # The first matching category rule wins. Names are lower-cased before matching.
 RULES = [
@@ -65,7 +66,7 @@ def safe_destination(folder, filename):
 def organize_folder(dry_run):
     """Plan or perform actions on files directly inside DOWNLOADS."""
     moved = 0
-    deleted = 0
+    backed_up = 0
 
     for filename in sorted(os.listdir(DOWNLOADS)):
         source = os.path.join(DOWNLOADS, filename)
@@ -73,10 +74,15 @@ def organize_folder(dry_run):
             continue  # Leave category folders and other directories alone.
 
         if is_junk(filename):
-            print(f"  DELETE  {filename}")
+            backup_destination = safe_destination(RECOVERY_BACKUP, filename)
+            print(
+                f"  BACKUP  {filename:<28} -> "
+                f"Deleted_Backup/{os.path.basename(backup_destination)}"
+            )
             if not dry_run:
-                os.remove(source)
-            deleted += 1
+                os.makedirs(RECOVERY_BACKUP, exist_ok=True)
+                shutil.move(source, backup_destination)
+            backed_up += 1
             continue
 
         category = find_category(filename)
@@ -88,15 +94,11 @@ def organize_folder(dry_run):
             shutil.move(source, destination)
         moved += 1
 
-    return moved, deleted
+    return moved, backed_up
 
 
-def main():
-    # Create an empty input folder if needed. Existing contents are preserved.
-    os.makedirs(DOWNLOADS, exist_ok=True)
-    print("=== SMART DOWNLOADS ORGANIZER ===")
-    print(f"Organizing files directly inside: {DOWNLOADS}\n")
-
+def organize_downloads():
+    """Preview and organize the files directly inside DOWNLOADS."""
     files = [
         name for name in os.listdir(DOWNLOADS)
         if os.path.isfile(os.path.join(DOWNLOADS, name))
@@ -106,8 +108,8 @@ def main():
         return
 
     print("PLAN:")
-    planned_moved, planned_deleted = organize_folder(dry_run=True)
-    print(f"\nPlanned moves: {planned_moved} | Planned deletions: {planned_deleted}")
+    planned_moved, planned_backed_up = organize_folder(dry_run=True)
+    print(f"\nPlanned moves: {planned_moved} | Files to back up: {planned_backed_up}")
 
     answer = input("Apply this plan? (y/n): ").strip().lower()
     if answer != "y":
@@ -115,8 +117,66 @@ def main():
         return
 
     print("\nWORKING:")
-    moved, deleted = organize_folder(dry_run=False)
-    print(f"\nFinished. Files moved: {moved} | Junk files deleted: {deleted}")
+    moved, backed_up = organize_folder(dry_run=False)
+    print(f"\nFinished. Files moved: {moved} | Files backed up: {backed_up}")
+
+
+def restore_from_backup():
+    """Let the user choose one backed-up file to restore to DOWNLOADS."""
+    if not os.path.isdir(RECOVERY_BACKUP):
+        print("There are no backed-up files yet.")
+        return
+
+    backup_files = sorted(
+        name for name in os.listdir(RECOVERY_BACKUP)
+        if os.path.isfile(os.path.join(RECOVERY_BACKUP, name))
+    )
+    if not backup_files:
+        print("There are no backed-up files yet.")
+        return
+
+    print("Backed-up files:")
+    for number, filename in enumerate(backup_files, start=1):
+        print(f"  {number}. {filename}")
+
+    choice = input("Enter a number to restore, or q to cancel: ").strip().lower()
+    if choice == "q":
+        print("Restore cancelled.")
+        return
+
+    try:
+        index = int(choice) - 1
+    except ValueError:
+        print("Please enter a listed number or q.")
+        return
+
+    if index < 0 or index >= len(backup_files):
+        print("That number is not in the list.")
+        return
+
+    filename = backup_files[index]
+    source = os.path.join(RECOVERY_BACKUP, filename)
+    destination = safe_destination(DOWNLOADS, filename)
+    shutil.move(source, destination)
+    print(f"Restored to Messy_Downloads/{os.path.basename(destination)}")
+
+
+def main():
+    # Create an empty input folder if needed. Existing contents are preserved.
+    os.makedirs(DOWNLOADS, exist_ok=True)
+    print("=== SMART DOWNLOADS ORGANIZER ===")
+    print(f"Input folder: {DOWNLOADS}")
+    print(f"Recovery folder: {RECOVERY_BACKUP}\n")
+    print("1. Organize files")
+    print("2. Restore a backed-up file")
+
+    choice = input("Choose an option (1 or 2): ").strip()
+    if choice == "1":
+        organize_downloads()
+    elif choice == "2":
+        restore_from_backup()
+    else:
+        print("Please choose 1 or 2.")
 
 
 if __name__ == "__main__":
