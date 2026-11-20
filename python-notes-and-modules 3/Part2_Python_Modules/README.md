@@ -22,6 +22,7 @@ These three modules work as a team for **file and folder automation**, so instea
    ```
    python3 smart_organizer.py        (use "python" on Windows)
    ```
+   or if you are on VS CODE use the "Run and Debug" and then Run Smart Organizer
 3. The first run creates a `Messy_Downloads` folder next to the script. Put some files in it and run again.
 4. Choose **1** to organize (the program shows a plan and asks `y/n`) or **2** to restore a file that was moved to `Deleted_Backup`.
 
