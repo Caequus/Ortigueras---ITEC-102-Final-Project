@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+playground/
+Messy_Downloads/
+Backup_Before_Sorting/
+Sorted_Downloads.zip
+# Videos are NOT part of the GitHub upload
+*.mp4
+*.mkv
+*.mov
+
+# Files created by Part 1 file examples
+demo_*.txt
+demo_*.log
+diary.txt
+gradebook.txt
