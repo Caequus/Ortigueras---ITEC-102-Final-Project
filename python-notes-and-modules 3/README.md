@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **Group members** | Ortigueras, Collarina, Dela Cruz, [Member 4] |
-| **Section / Course** | [BSCS 1A] |
+| **Section / Course** | BSCS 1A |
 | **Uploaded by** | Ortigueras, Charles Jeymel Y. |
 
 ## What is in this repository
