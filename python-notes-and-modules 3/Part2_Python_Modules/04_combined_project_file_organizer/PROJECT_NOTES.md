@@ -8,6 +8,7 @@
    ```
    python3 smart_organizer.py        (use "python" on Windows)
    ```
+   or if you are on VS CODE use the "Run and Debug" and then Run Smart Organizer
 3. Choose **1** to organize (type `y` to apply the plan) or **2** to restore a backed-up file.
 
 ## The Python Modules
