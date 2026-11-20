@@ -4,9 +4,9 @@
 
 | | |
 |---|---|
-| **Group members** | [Member 1], [Member 2], [Member 3], [Member 4] |
+| **Group members** | Ortigueras, Collarina, Dela Cruz, [Member 4] |
 | **Section / Course** | [BSCS 1A] |
-| **Uploaded by** | [Your Name] |
+| **Uploaded by** | Ortigueras, Charles Jeymel Y. |
 
 ## What is in this repository
 - **Part 1: Structured Python Notes.** One folder per core Python topic, each with **8+ examples** that go from Easy to Intermediate to Hard (no OOP or Data Structures topics).
