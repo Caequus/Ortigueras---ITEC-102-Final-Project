@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Group members** | Ortigueras, Collarina, Dela Cruz, [Member 4] |
+| **Group members** | Ortigueras, Collarina, Dela Cruz, Santos |
 | **Section / Course** | BSCS 1A |
 | **Uploaded by** | Ortigueras, Charles Jeymel Y. |
 
