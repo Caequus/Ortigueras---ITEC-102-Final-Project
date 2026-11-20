@@ -6,9 +6,9 @@ These three modules work as a team for **file and folder automation**, so instea
 
 | Module | Job in the project |
 |---|---|
-| `os` | the eyes: finds folders, lists files, builds paths, checks names |
-| `fnmatch` | the brain: decides which category each file belongs to |
-| `shutil` | the muscles: moves the files |
+| `os` | finds folders, lists files, builds paths, checks names |
+| `fnmatch` | decides which category each file belongs to |
+| `shutil` | moves the files |
 
 ## What is inside
 | File | What it is |
